@@ -4,9 +4,16 @@ export async function connectDatabase() {
   const mongoUri = process.env.MONGODB_URI;
 
   if (!mongoUri) {
-    throw new Error('MONGODB_URI is not configured.');
+    console.warn('MONGODB_URI is not configured. Starting without database connection.');
+    return false;
   }
 
-  await mongoose.connect(mongoUri);
-  console.log('MongoDB connected successfully');
+  try {
+    await mongoose.connect(mongoUri);
+    console.log('MongoDB connected successfully');
+    return true;
+  } catch (error) {
+    console.error('MongoDB connection failed. Starting without database connection.', error);
+    return false;
+  }
 }
