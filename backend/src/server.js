@@ -31,7 +31,7 @@ app.use('/api/contact', contactRoutes);
 if (hasFrontendBuild) {
   app.use(express.static(frontendDistPath));
 
-  app.get('*', (req, res, next) => {
+  app.get(/^(?!\/api\/).*/, (req, res, next) => {
     if (req.path.startsWith('/api/')) {
       return next();
     }
