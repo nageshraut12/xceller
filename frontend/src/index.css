@@ -1,11 +1,10 @@
-@import "tailwindcss";
-
-@theme {
-  --font-sans: "Manrope", sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
   --bg: #f4f7fb;
   --surface: rgba(255, 255, 255, 0.82);
   --surface-strong: #ffffff;
